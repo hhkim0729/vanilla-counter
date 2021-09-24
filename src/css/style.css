@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  margin: 1rem;
+  font-size: 3rem;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  padding: 0.2em;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+#counter-list-box {
+  text-align: center;
+}
+
+#counter-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.counter-box {
+  width: 10rem;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  border-bottom: 1px solid gray;
+}
+
+.num-box {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#btn-new-counter {
+  font-size: 1.5rem;
+  background-color: rgba(0, 128, 128, 0.6);
+  color: white;
+  padding: 0.3rem 0.5rem;
+}
+
+#btn-new-counter:hover {
+  background-color: teal;
+}
+
+.btn-box {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn-control {
+  font-size: 1rem;
+  background-color: #eee;
+  width: 2.5rem;
+}
+
+.btn-control:hover {
+  background-color: #ddd;
+}
+
+.btn-delete {
+  position: relative;
+  top: -6rem;
+  right: -4rem;
+}
