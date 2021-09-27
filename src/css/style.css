@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  position: relative;
+  margin-top: 1rem;
+  font-size: 3rem;
+  background-color: white;
+  z-index: 1;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  padding: 0.2em;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+#counter-list-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#counter-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.counter-box {
+  width: 10rem;
+  border-bottom: 1px solid gray;
+}
+
+.num-box {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.btn-box {
+  border: 1px solid #aaa;
+  border-radius: 0.5rem;
+  padding: 2rem 0 1rem 0;
+  width: 23rem;
+  position: relative;
+  top: -1.5rem;
+}
+
+#btn-top-box button {
+  font-size: 1.5rem;
+  color: white;
+  padding: 0.3rem 0.5rem;
+  opacity: 0.6;
+  margin-bottom: 1rem;
+}
+
+#btn-top-box button:hover {
+  opacity: 1;
+}
+
+.btn-new-counter {
+  background-color: teal;
+}
+
+.btn-clear {
+  background-color: #555;
+}
+
+#btn-control-all-box button {
+  font-size: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: tomato;
+  opacity: 0.6;
+  color: white;
+}
+
+#btn-control-all-box button:hover {
+  opacity: 1;
+}
+
+.btn-control-box button {
+  font-size: 1rem;
+  background-color: #eee;
+  width: 2.5rem;
+}
+
+.btn-control-box button:hover {
+  background-color: #ddd;
+}
+
+.btn-delete {
+  position: relative;
+  top: -6rem;
+  right: -4rem;
+}
