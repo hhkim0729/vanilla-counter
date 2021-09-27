@@ -2,6 +2,8 @@
 
 A simple counter in Vanilla JS
 
+<img src="https://user-images.githubusercontent.com/72433681/134885725-45d12db8-a76e-45b4-8987-d93fbf859dbf.gif" height="300" />
+                                                                                                                         
 ## 요구 사항
 
 - `Counter` 클래스를 별도의 파일 모듈로 구현한다.
@@ -18,11 +20,11 @@ A simple counter in Vanilla JS
 
 ## 할 일
 
-[x] 객체 타입의 상태를 immutable하게 관리하는 연습 ([참고](https://sustainable-dev.tistory.com/156))
-[x] 이벤트 위임 개념을 사용하여 이벤트 리스너 리팩토링
-[x] 모든 카운터를 삭제하는 clear 버튼 만들기
-[ ] 모든 카운터를 한꺼번에 컨트롤하는 +1, 0, -1 버튼 만들기
-[ ] 코드 리뷰 & 리팩토링
+- [x] 객체 타입의 상태를 immutable하게 관리하는 연습 ([참고](https://sustainable-dev.tistory.com/156))
+- [x] 이벤트 위임 개념을 사용하여 이벤트 리스너 리팩토링
+- [x] 모든 카운터를 삭제하는 clear 버튼 만들기
+- [x] 모든 카운터를 한꺼번에 컨트롤하는 +1, 0, -1 버튼 만들기
+- [ ] 코드 리뷰 & 리팩토링
 
 ## 의문점
 
