@@ -5,9 +5,9 @@ import Counter from './modules/Counter.js';
 
 class App {
   constructor() {
-    const counters = JSON.parse(localStorage.getItem('counters'));
+    const localCounters = JSON.parse(localStorage.getItem('counters'));
     const currentId = Number(localStorage.getItem('id'));
-    this._counters = counters ? counters : [];
+    this._counters = localCounters ? localCounters : [];
     this._currentId = currentId ? currentId : 0;
     this._counterInstances = this._counters.map(
       (counter) => new Counter(counter.num, counter.id)
@@ -63,66 +63,70 @@ class App {
   }
 
   initEventListeners() {
-    $('#btn-top-box').addEventListener('click', (e) => {
-      if (e.target.nodeName !== 'BUTTON') {
-        return;
-      }
+    $('#btn-top-box').addEventListener(
+      'click',
+      ({ target: { nodeName, classList } }) => {
+        if (nodeName !== 'BUTTON') {
+          return;
+        }
 
-      if (e.target.classList.contains('btn-new-counter')) {
-        this._counters = [...this._counters, { id: this._currentId, num: 0 }];
-        this._currentId += 1;
+        if (classList.contains('btn-new-counter')) {
+          this._counters = [...this._counters, { id: this._currentId, num: 0 }];
+          this._currentId += 1;
+        }
+        if (classList.contains('btn-clear')) {
+          this._counters = [];
+        }
+        this.update();
       }
-      if (e.target.classList.contains('btn-clear')) {
-        this._counters = [];
-        this._currentId = 0;
-      }
-      this.update();
-    });
+    );
 
-    $('#btn-control-all-box').addEventListener('click', (e) => {
-      if (e.target.nodeName !== 'BUTTON') {
-        return;
-      }
+    $('#btn-control-all-box').addEventListener(
+      'click',
+      ({ target: { nodeName, classList } }) => {
+        if (nodeName !== 'BUTTON') {
+          return;
+        }
 
-      const newCounters = [...this._counters];
-      if (e.target.classList.contains('btn-increase')) {
-        newCounters.map((counter) => (counter.num += 1));
+        const newCounters = [...this._counters];
+        if (classList.contains('btn-increase')) {
+          newCounters.map((counter) => (counter.num += 1));
+        }
+        if (classList.contains('btn-decrease')) {
+          newCounters.map((counter) => (counter.num -= 1));
+        }
+        if (classList.contains('btn-reset')) {
+          newCounters.map((counter) => (counter.num = 0));
+        }
+        this._counters = newCounters;
+        this.update();
       }
-      if (e.target.classList.contains('btn-decrease')) {
-        newCounters.map((counter) => (counter.num -= 1));
-      }
-      if (e.target.classList.contains('btn-reset')) {
-        newCounters.map((counter) => (counter.num = 0));
-      }
-      this._counters = newCounters;
-      this.update();
-    });
+    );
 
-    $('#counter-list').addEventListener('click', (e) => {
-      if (e.target.nodeName !== 'BUTTON') {
+    $('#counter-list').addEventListener('click', ({ target }) => {
+      const { nodeName, classList } = target;
+      if (nodeName !== 'BUTTON') {
         return;
       }
 
       const counterId = Number(
-        e.target.closest('.counter-box').dataset.counterId
+        target.closest('.counter-box').dataset.counterId
       );
       const counterInstance = this._counterInstances.find(
         (counter) => counter.id === counterId
       );
-      if (e.target.classList.contains('btn-delete')) {
-        this._counters = this._counters.filter(
-          (counter) => counter.id !== counterInstance.id
-        );
+      if (classList.contains('btn-delete')) {
+        this._counters = this.getFilteredCounters(counterId);
         this.update();
         return;
       }
-      if (e.target.classList.contains('btn-increase')) {
+      if (classList.contains('btn-increase')) {
         counterInstance.increase();
       }
-      if (e.target.classList.contains('btn-decrease')) {
+      if (classList.contains('btn-decrease')) {
         counterInstance.decrease();
       }
-      if (e.target.classList.contains('btn-reset')) {
+      if (classList.contains('btn-reset')) {
         counterInstance.reset();
       }
       this._counters = this.getUpdatedCounters(counterInstance);
@@ -131,6 +135,4 @@ class App {
   }
 }
 
-window.onload = () => {
-  new App();
-};
+new App();
